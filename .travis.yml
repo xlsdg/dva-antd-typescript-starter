@@ -1,0 +1,35 @@
+language: node_js
+
+os:
+  - osx
+
+node_js:
+  - "6"
+
+branches:
+  only:
+    - master
+
+cache:
+  directories:
+    - node_modules
+
+install:
+  - npm install
+
+script:
+  - npm run build
+
+after_script:
+  - cd dist
+  - git init
+  - git config --global user.name 'xLsDg'
+  - git config --global user.email 'xlsdg@qq.com'
+  - git add .
+  - git commit -m "Update demo"
+  - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:gh-pages
+
+env:
+  global:
+    - GH_REF: github.com/xlsdg/dva-antd-typescript-starter.git
+    - secure: "VzIRE+JJR8NsioXAZNaC1Nerv8lkdtIHBTGW9x7sPtabxjPVg1JV+5t38qnJTa3KG5iYrCnhRGsazbYjpkgXoL1lla02Gp+Q6VeG0FzUj0UziWFi/0MnrThisGUMWRk4AKKDP1b/5u3J9EengWvE1/Ns9G5tA5biO09Z3etxvoTDcwf1AsAaQ3N9yVu1ik1+3YrnsrAEJX2s/TfUFc0UwSpsU6pDW1ki2C87zVJsOTH6Fm137qJ1YToCk3Oxq8PDvwjuSI2JIV5/e3Pw5wd4aV6eitt5B1w1JUf/O3MMeDtagBLJfcOdML4TqHcHrq2cByd7/TX3e88KljdNiIjTVhnVJNOqWn1KhHE9A8tuf2NjTtl/0+MY6ShPsaImkC1XZOnrWlQJohbkPdS0S5hPdnudTB8WsbwpO7iWIlxJusvFB0doBhPruYqb+pe6gDC12s/qVaSTWq53JjAonvYvYlN1WHR62+p0zGxet7/YKZh/Qh6tXDQw7yvRn7EShreGV6b4kUZ/1DzOr7vZeQOFh0zxwFdeog4/ufdodbejX0j8OZeHxcGKbJNW2/Ogd3M+bbY2Eh8j6LXtzewZdN4bhzIz0yZD94Bs4GEnaqxrQyrI42+4LCaSeCCNu4sUUn3c7tA7keipWqh7AGxsVbAFHrS7vrqCSRJ1vzE66WdwkAU="
