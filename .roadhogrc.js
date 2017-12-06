@@ -1,9 +1,9 @@
 export default {
   autoprefixer: {
     browsers: [
-      'last 7 versions',
-      'Android >= 4.2',
-      'iOS >= 6'
+      '> 1%',
+      'IE >= 9',
+      'last 2 versions'
     ]
   },
   disableCSSModules: false,
