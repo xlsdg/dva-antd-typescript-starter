@@ -1,7 +1,7 @@
 module.exports = function(config, env) {
   if (env === 'production') {
     config.entry = {
-      index: './src/index.ts',
+      index: ['babel-polyfill', './src/index.ts'],
       common: ['react', 'react-dom']
     };
 
